@@ -181,6 +181,7 @@ return [
          */
         Modules\Website\User\Providers\UserModuleServiceProvider::class,
         Modules\Admin\User\Providers\UserModuleServiceProvider::class,
+        Modules\Admin\Skill\Providers\SkillModuleServiceProvider::class,
         Modules\Common\Providers\CommonServiceProvider::class,
     ],
 

@@ -28,6 +28,7 @@
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
             "Modules\\Admin\\User\\": "Modules/Admin/User",
+            "Modules\\Admin\\Skill\\": "Modules/Admin/Skill",
             "Modules\\Website\\User\\": "Modules/Website/User",
             "Modules\\Common\\": "Modules/Common"
         },
