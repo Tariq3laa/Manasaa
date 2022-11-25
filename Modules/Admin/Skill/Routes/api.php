@@ -10,6 +10,7 @@ Route::group([
             'middleware' => 'auth:admin'
         ], function () {
             Route::apiResource('lessons', LessonController::class);
+            Route::apiResource('questions', QuestionController::class);
         });
     }
 );

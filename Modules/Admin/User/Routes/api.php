@@ -16,6 +16,5 @@ Route::group([
         'middleware' => 'auth:admin'
     ], function () {
         Route::get('profile', [AuthController::class, 'profile']);
-        // Route::apiResource('jobs', JobController::class);
     });
 });

@@ -18,15 +18,15 @@ class LessonController extends InitController
     public function index(Request $request): JsonResponse
     {
         try {
-            $cities = app(Pipeline::class)
+            $lessons = app(Pipeline::class)
                 ->send(Lesson::query()->where('skill_id', $request->skill_id))
                 ->through([
                     \Modules\Common\Filters\PaginationPipeline::class,
                     \Modules\Common\Filters\SortPipeline::class,
                 ])
                 ->thenReturn();
-            $collection = LessonResource::collection($cities);
-            $data = $this->getPaginatedResponse($cities, $collection);
+            $collection = LessonResource::collection($lessons);
+            $data = $this->getPaginatedResponse($lessons, $collection);
             return $this->respondWithSuccess($data);
         } catch (\Exception $e) {
             return $this->respondError($e->getMessage());
@@ -67,7 +67,6 @@ class LessonController extends InitController
             $item = Lesson::find($id);
             if ($item) {
                 $item->update($request->all());
-                $item = new LessonResource($item);
                 DB::commit();
                 return $this->respondOk('Lesson updated successfully .');
             } else {
