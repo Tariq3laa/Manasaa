@@ -19,8 +19,9 @@ class QuestionController extends InitController
     public function index(Request $request): JsonResponse
     {
         try {
+            $request->lesson_id ? $query = Question::query()->where('lesson_id', $request->lesson_id) : $query = Question::query();
             $questions = app(Pipeline::class)
-                ->send(Question::query()->where('lesson_id', $request->lesson_id))
+                ->send($query)
                 ->through([
                     \Modules\Common\Filters\PaginationPipeline::class,
                     \Modules\Common\Filters\SortPipeline::class,
